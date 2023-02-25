@@ -6,6 +6,7 @@ package main
 import (
 	"attendance-app/controllers"
 	"attendance-app/initializers"
+	"attendance-app/models"
 
 	"github.com/gin-gonic/gin"
 )
@@ -13,6 +14,8 @@ import (
 func init() {
 	initializers.LoadEnvVariables()
 	initializers.ConnectToDB()
+	initializers.DB.AutoMigrate(&models.Post{})
+
 }
 
 func main() {
