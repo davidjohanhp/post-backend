@@ -55,3 +55,44 @@ func PostUpdate(c *gin.Context) {
 		"post": post,
 	})
 }
+
+func PostDelete(c *gin.Context) {
+	id := c.Param("id")
+
+	var post models.Post
+	initializers.DB.First(&post, id)
+
+	initializers.DB.Delete(&post)
+
+	c.JSON(http.StatusOK, gin.H{
+		"post": post,
+	})
+}
+
+func PostsGetAll(c *gin.Context) {
+	var posts []models.Post
+
+	initializers.DB.Find(&posts)
+
+	c.JSON(http.StatusOK, gin.H{
+		"posts": posts,
+	})
+}
+
+func PostGet(c *gin.Context) {
+	id := c.Param("id")
+
+	var post models.Post
+	initializers.DB.First(&post, id)
+	err := initializers.DB.First(&post, id).Error //fetch error kalo not found
+
+	if err != nil {
+		c.JSON(http.StatusNotFound, gin.H{
+			"message": "not found",
+		})
+	} else {
+		c.JSON(http.StatusOK, gin.H{
+			"post": post,
+		})
+	}
+}
