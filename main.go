@@ -1,8 +1,5 @@
 package main
 
-// "net/http"
-// "github.com/gin-gonic/gin"
-
 import (
 	"attendance-app/controllers"
 	"attendance-app/initializers"
@@ -26,5 +23,5 @@ func main() {
 	r.DELETE("/post/:id", controllers.PostDelete)
 	r.GET("/get-post/:id", controllers.PostGet)
 	r.GET("/get-posts", controllers.PostsGetAll)
-	r.Run() // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
+	r.Run()
 }
