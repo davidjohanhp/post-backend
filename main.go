@@ -9,7 +9,7 @@ import (
 
 	// "github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
-	cors "github.com/rs/cors/wrapper/gin"
+	// cors "github.com/rs/cors/wrapper/gin"
 )
 
 func init() {
@@ -37,8 +37,8 @@ func CORSMiddleware() gin.HandlerFunc {
 
 func main() {
 	r := gin.Default()
-	r.Use(cors.Default())
-	// r.Use(CORSMiddleware())
+	// r.Use(cors.Default())
+	r.Use(CORSMiddleware())
 	// r.Use(cors.New(cors.Config{
 	// 	AllowOrigins:     []string{"http://localhost:3000/"},
 	// 	AllowMethods:     []string{"PUT", "PATCH"},
