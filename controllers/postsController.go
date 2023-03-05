@@ -9,7 +9,7 @@ import (
 )
 
 func PostsCreate(c *gin.Context) {
-	//get data
+	//get data from body
 	var body struct {
 		Body  string
 		Title string
